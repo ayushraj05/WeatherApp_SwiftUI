@@ -11,7 +11,7 @@ struct ContentView: View {
     var body: some View {
         ZStack{
             LinearGradient(
-                gradient:Gradient(colors:[.blue,.white]),
+                gradient:Gradient(colors:[.blue,.lightBlue]),
                            startPoint: .topLeading,
                            endPoint: .bottomTrailing)
                 .edgesIgnoringSafeArea(.all)
@@ -32,6 +32,29 @@ struct ContentView: View {
                         .foregroundColor(.white)
                 }
                 Spacer()
+                HStack(spacing: 20){
+                    WeatherDayView(dayOfWeek: "MON",
+                                   temperature: 35,
+                                   imageName: "cloud.fill")
+                    
+                    WeatherDayView(dayOfWeek: "TUE",
+                                   temperature: 25,
+                                   imageName: "cloud.drizzle.fill")
+                    
+                    WeatherDayView(dayOfWeek: "WED",
+                                   temperature: 23,
+                                   imageName: "cloud.rain.fill")
+                    
+                    WeatherDayView(dayOfWeek: "THU",
+                                   temperature: 37,
+                                   imageName: "sun.max.fill")
+                    
+                    WeatherDayView(dayOfWeek: "FRI",
+                                   temperature: 38,
+                                   imageName: "sun.max.fill")
+                    
+                }
+                Spacer()
                 
             }
             .padding()
@@ -41,4 +64,25 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+}
+
+struct WeatherDayView: View {
+    var dayOfWeek : String
+    var temperature : Int
+    var imageName : String
+    var body: some View {
+        VStack{
+            Text(dayOfWeek)
+                .foregroundColor(.white)
+                .font(.system(size: 20, weight: .medium))
+            Image(systemName: imageName)
+                .renderingMode(.original)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 40,height: 40)
+            Text("\(temperature) °")
+                .foregroundColor(.white)
+                .font(.system(size: 30))
+        }
+    }
 }
