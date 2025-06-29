@@ -12,10 +12,6 @@ struct WeatherButton: View{
     var backgroundColor: Color
     var textColor: Color
     var body: some View{
-        Button{
-            print("Pressed")
-            
-        }label: {
             Text(title)
                 .foregroundColor(textColor)
                 .frame(width: 280,height: 50)
@@ -23,6 +19,5 @@ struct WeatherButton: View{
                 .cornerRadius(25)
                 .font(.system(size: 20,weight: .bold))
             
-        }
     }
 }
