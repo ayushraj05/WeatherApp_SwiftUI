@@ -37,19 +37,10 @@ struct ContentView: View {
                     
                 }
                 Spacer()
+                WeatherButton(title: "Press to change",
+                              backgroundColor: .white,
+                              textColor: .black)
                 
-                Button{
-                    print("Pressed")
-                    
-                }label: {
-                    Text("Press to change")
-                        .foregroundColor(.black)
-                        .frame(width: 280,height: 50)
-                        .background(Color.white)
-                        .cornerRadius(25)
-                        .font(.system(size: 20,weight: .bold))
-                    
-                }
                 Spacer()
                 
             }
@@ -124,3 +115,5 @@ struct WeatherSysView: View{
         .padding(.bottom,40)
     }
 }
+
+
