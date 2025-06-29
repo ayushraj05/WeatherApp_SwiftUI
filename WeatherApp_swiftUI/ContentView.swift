@@ -12,21 +12,8 @@ struct ContentView: View {
         ZStack{
             BackgroundView(topColor: .blue, bottomColor: .lightBlue)
             VStack(spacing: 30){
-                Text("Jaipur, Rajasthan")
-                    .font(.system(size: 32, weight: .medium,design: .default))
-                    .foregroundColor(.white)
-                    .padding()
-                VStack(spacing: 5) {
-                    Image(systemName: "cloud.sun.fill")
-                        .renderingMode(.original)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit )
-                        .frame(width: 180,height: 180)
-                        
-                    Text("38°")
-                        .font(.system(size: 70, weight: .medium))
-                        .foregroundColor(.white)
-                }
+                CityView(cityName: "Jaipur, Rajasthan")
+                WeatherSysView(iconImage: "cloud.sun.fill", temperature: 38)
                 HStack(spacing: 20){
                     WeatherDayView(dayOfWeek: "MON",
                                    temperature: 35,
@@ -106,5 +93,34 @@ struct BackgroundView: View {
             startPoint: .topLeading,
             endPoint: .bottomTrailing)
         .edgesIgnoringSafeArea(.all)
+    }
+}
+
+struct CityView: View{
+    var cityName : String
+    var body: some View{
+        Text("Jaipur, Rajasthan")
+            .font(.system(size: 32, weight: .medium,design: .default))
+            .foregroundColor(.white)
+            .padding()
+    }
+}
+
+struct WeatherSysView: View{
+    var iconImage: String
+    var temperature: Int
+    var body: some View{
+        VStack(spacing: 5) {
+            Image(systemName: iconImage)
+                .renderingMode(.original)
+                .resizable()
+                .aspectRatio(contentMode: .fit )
+                .frame(width: 180,height: 180)
+                
+            Text("\(temperature)°")
+                .font(.system(size: 70, weight: .medium))
+                .foregroundColor(.white)
+        }
+        .padding(.bottom,40)
     }
 }
