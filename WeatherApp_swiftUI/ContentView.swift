@@ -10,12 +10,8 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         ZStack{
-            LinearGradient(
-                gradient:Gradient(colors:[.blue,.lightBlue]),
-                           startPoint: .topLeading,
-                           endPoint: .bottomTrailing)
-                .edgesIgnoringSafeArea(.all)
-            VStack {
+            BackgroundView(topColor: .blue, bottomColor: .lightBlue)
+            VStack(spacing: 30){
                 Text("Jaipur, Rajasthan")
                     .font(.system(size: 32, weight: .medium,design: .default))
                     .foregroundColor(.white)
@@ -31,7 +27,6 @@ struct ContentView: View {
                         .font(.system(size: 70, weight: .medium))
                         .foregroundColor(.white)
                 }
-                Spacer()
                 HStack(spacing: 20){
                     WeatherDayView(dayOfWeek: "MON",
                                    temperature: 35,
@@ -52,6 +47,20 @@ struct ContentView: View {
                     WeatherDayView(dayOfWeek: "FRI",
                                    temperature: 38,
                                    imageName: "sun.max.fill")
+                    
+                }
+                Spacer()
+                
+                Button{
+                    print("Pressed")
+                    
+                }label: {
+                    Text("Press to change")
+                        .foregroundColor(.black)
+                        .frame(width: 280,height: 50)
+                        .background(Color.white)
+                        .cornerRadius(25)
+                        .font(.system(size: 20,weight: .bold))
                     
                 }
                 Spacer()
@@ -84,5 +93,18 @@ struct WeatherDayView: View {
                 .foregroundColor(.white)
                 .font(.system(size: 30))
         }
+    }
+}
+
+struct BackgroundView: View {
+    var topColor : Color
+    var bottomColor : Color
+    
+    var body: some View {
+        LinearGradient(
+            gradient:Gradient(colors:[topColor,bottomColor]),
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing)
+        .edgesIgnoringSafeArea(.all)
     }
 }
